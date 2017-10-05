@@ -13,10 +13,10 @@ const CLOUDINARY_AUTH = { username: CLOUDINARY_KEY, password: CLOUDINARY_SECRET 
 exports.gridThumbnails = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     axios.get(
-      `${CLOUDINARY_BASE_URL}/resources/image/upload/`,
+      `${CLOUDINARY_BASE_URL}/resources/image/tags/pokedex-thumbnails`,
       {
         auth: CLOUDINARY_AUTH,
-        params: { prefix: 'pokemon/official' }
+        params: { max_results: 200 }
       }
     )
       .then(response => response.data)
