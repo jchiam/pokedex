@@ -45,7 +45,7 @@ module.exports = {
     // new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
     new DotenvPlugin({
       sample: './.env.example',
-      path: './.env'
+      path: './.env.production'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({

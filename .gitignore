@@ -10,5 +10,6 @@ dist
 # misc
 .DS_Store
 .env
+.env.production
 npm-debug.log
 firebase-debug.log
