@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PokemonList from 'components/PokemonList';
+import PokemonList from 'containers/PokemonList';
 
 export default class Layout extends Component {
   render() {
