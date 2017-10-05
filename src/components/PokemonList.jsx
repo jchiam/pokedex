@@ -13,11 +13,11 @@ export default class PokemonList extends Component {
   renderGrid() {
     const { list } = this.props;
     return (
-      <Grid container justify="flex-start">
+      <Grid container justify="center">
         {list.map((p, index) => (
           <Grid key={p} item>
-            <Paper style={{ width: 200, height: 200 }}>
-              <img src={generateImageUrl(p, 'w_200,h_200')} alt={index} />
+            <Paper style={{ width: 100, height: 100 }}>
+              <img src={generateImageUrl(p, 'f_auto,w_100,h_100,q_auto')} alt={index} />
             </Paper>
           </Grid>
         ))}
