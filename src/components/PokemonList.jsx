@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import { CircularProgress } from 'material-ui/Progress';
 
 import PokemonDialog from 'containers/PokemonDialog';
-
 import { generateImageUrl } from 'utils';
+import DATA_STATES from 'constants/dataStates';
 
 export default class PokemonList extends Component {
   constructor(props) {
@@ -35,7 +36,10 @@ export default class PokemonList extends Component {
   }
 
   renderGrid() {
-    const { list } = this.props;
+    const { list, dataState } = this.props;
+    if (dataState === DATA_STATES.Fetching) {
+      return <CircularProgress size={50} />;
+    }
     return (
       <Grid container justify="center">
         {list.map((p, index) => (
@@ -64,6 +68,7 @@ export default class PokemonList extends Component {
 
 PokemonList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dataState: PropTypes.string.isRequired,
   fetchPokemonList: PropTypes.func.isRequired
 };
 

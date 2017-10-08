@@ -1,8 +1,10 @@
 import * as actions from 'actions/constants';
+import DATA_STATES from 'constants/dataStates';
 
 function generateEmptyState() {
   return {
-    list: []
+    list: [],
+    dataState: DATA_STATES.Unfetched
   };
 }
 
@@ -28,15 +30,18 @@ export default function pokemonReducer(state = generateEmptyState(), action) {
     case actions.FETCHING_POKEMON_LIST:
       return {
         ...state,
+        dataState: DATA_STATES.Fetching
       };
     case actions.RECEIVED_POKEMON_LIST:
       return {
         ...state,
-        list: action.payload.sort(sortByPokemonId).map(p => p.secure_url)
+        list: action.payload.sort(sortByPokemonId).map(p => p.secure_url),
+        dataState: DATA_STATES.Received
       };
     case actions.FETCH_POKEMON_LIST_ERROR:
       return {
-        ...state
+        ...state,
+        dataState: DATA_STATES.Error
       };
     default:
       return state;
