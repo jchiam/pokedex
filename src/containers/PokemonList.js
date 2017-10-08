@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import PokemonList from 'components/PokemonList';
-import fetchPokemonList from 'actions/pokemonList';
+import { fetchPokemonList } from 'actions/pokemon';
 
 function mapStateToProps(state) {
   return {
