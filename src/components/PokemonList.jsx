@@ -71,7 +71,3 @@ PokemonList.propTypes = {
   dataState: PropTypes.string.isRequired,
   fetchPokemonList: PropTypes.func.isRequired
 };
-
-PokemonList.defaultProps = {
-  pokemon: []
-};
