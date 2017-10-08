@@ -6,6 +6,7 @@
     "public": "dist",
     "rewrites": [
       { "source": "/gridThumbnails", "function": "gridThumbnails" },
+      { "source": "/getPokemonById", "function": "getPokemonById" },
       { "source": "**", "destination": "/index.html" }
     ]
   }
