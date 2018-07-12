@@ -7,13 +7,13 @@ import DATA_STATES from 'constants/dataStates';
 
 export default class PokemonDialog extends Component {
   componentDidMount() {
-    const { id, fetchPokemonDetails } = this.props;
-    fetchPokemonDetails(id);
+    this.props.fetchPokemonDetails(this.props.id);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.id !== this.props.id) {
-      nextProps.fetchPokemonDetails(nextProps.id);
+  componentDidUpdate(prevProps) {
+    const { open, id } = this.props;
+    if (open && id !== prevProps.id) {
+      this.props.fetchPokemonDetails(this.props.id);
     }
   }
 
@@ -30,9 +30,9 @@ export default class PokemonDialog extends Component {
   }
 
   render() {
-    const { open, id, onRequestClose } = this.props;
+    const { open, id, onClose } = this.props;
     return (
-      <Dialog open={open} onRequestClose={onRequestClose}>
+      <Dialog open={open} onClose={onClose}>
         <DialogTitle>{id}</DialogTitle>
         {this.renderContents()}
       </Dialog>
@@ -45,11 +45,11 @@ PokemonDialog.propTypes = {
   id: PropTypes.number.isRequired,
   details: PropTypes.string.isRequired,
   dataState: PropTypes.string.isRequired,
-  onRequestClose: PropTypes.func,
+  onClose: PropTypes.func,
   fetchPokemonDetails: PropTypes.func
 };
 
 PokemonDialog.defaultProps = {
-  onRequestClose: () => {},
+  onClose: () => {},
   fetchPokemonDetails: () => {}
 };

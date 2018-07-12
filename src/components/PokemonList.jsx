@@ -28,7 +28,7 @@ export default class PokemonList extends Component {
         <PokemonDialog
           open={dialogVisible}
           id={dialogId}
-          onRequestClose={() => this.setState({ dialogVisible: false })}
+          onClose={() => this.setState({ dialogVisible: false })}
         />
       );
     }
