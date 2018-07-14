@@ -6,14 +6,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: ['react-hot-loader/patch', './src/app.js'],
+  entry: ['react-hot-loader/patch', 'webpack-hot-middleware/client', './src/app.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     modules: [
       path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'node_modules')
@@ -21,6 +21,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'awesome-typescript-loader'
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

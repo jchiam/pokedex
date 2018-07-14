@@ -1,6 +1,12 @@
 # dependencies
 node_modules
 
+# build
+npm-debug.log
+firebase-debug.log
+.awcache
+yarn-error.log
+
 # testing
 coverage
 
@@ -11,5 +17,3 @@ dist
 .DS_Store
 .env
 .env.production
-npm-debug.log
-firebase-debug.log
